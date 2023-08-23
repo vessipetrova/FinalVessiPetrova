@@ -20,12 +20,13 @@ public class Header {
     public void clickLogin() {
         WebElement loginLink = driver.findElement(By.id("nav-link-login"));
         loginLink.click();
+        wait.until(ExpectedConditions.urlContains(LoginPage.PAGE_URL));
     }
     public boolean isLogoutButtonDisplayed(){
         try{
-            WebElement searchField = driver.findElement(By.xpath("//*[@id=\"navbarColor01\"]/ul[2]/li/a/i"));
-            return isLogoutButtonDisplayed();
-        } catch (NoSuchElementException e){
+            WebElement logoutButton = driver.findElement(By.xpath("//*[@id=\"navbarColor01\"]/ul[2]/li/a/i"));
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e){
             return false;
         }
     }

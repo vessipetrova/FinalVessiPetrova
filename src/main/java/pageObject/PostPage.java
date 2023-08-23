@@ -10,7 +10,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class PostPage {
-    public static final String PAGE_URL = "http://training.skillo-bg.com:4300/users/3974";
+    public static final String PAGE_URL = "http://training.skillo-bg.com:4300/posts/create";
     private final WebDriver driver;
 
     public PostPage(WebDriver driver) {

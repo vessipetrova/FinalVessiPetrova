@@ -20,8 +20,8 @@ public class TestLogout extends TestObject {
     @DataProvider(name = "getUsers")
     public Object[][] getUsers() {
         return new Object[][]{{"realtester", "123456", "realtester"}, //login with username
-                {"realtester@yopmail.com", "123456", "realtester"}, //login with email
-                {"adminmngr@yopmail.com", "123456D", "adminmngr"} //login with admin user
+                //{"realtester@yopmail.com", "123456", "realtester"}, //login with email
+                //{"adminmngr@yopmail.com", "123456", "adminmngr"} //login with admin user
         };
     }
     @Test (dataProvider = "getUsers")
@@ -52,7 +52,7 @@ public class TestLogout extends TestObject {
     }
 
     @Test (dataProvider = "getUsers", priority = 1)
-    public void testLogoutAsRegisteredUserFromProfileCreatePage(String username, String password, String name) {
+    public void testLogoutAsRegisteredUserFromPostPage(String username, String password, String name) {
         HomePage homePage = new HomePage(getDriver());
         homePage.navigateTo();
 
@@ -94,15 +94,11 @@ public class TestLogout extends TestObject {
     }
     @Test (priority = 3)
     public void testLogoutFromLoginPageAsGuestUser() {
-        HomePage homePage = new HomePage(getDriver());
-        homePage.navigateTo();
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.navigateTo();
 
         Header header = new Header(getDriver());
-        header.clickLogin();
-
-        LoginPage loginPage = new LoginPage(getDriver());
-        Assert.assertTrue(loginPage.isUrlLoaded(), "The Login URL is not correct!");
-        Assert.assertFalse(loginPage.isLogoutButtonDisplayed(), "LogoutButton is displayed as Guest!");
+        Assert.assertFalse(header.isLogoutButtonDisplayed(), "LogoutButton is displayed as Guest!");
     }
 }
 

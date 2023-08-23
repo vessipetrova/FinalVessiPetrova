@@ -21,7 +21,7 @@ public class ProfilePage {
 
     public boolean isUrlLoaded() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        return wait.until(ExpectedConditions.urlContains("http://training.skillo-bg.com:4300/users/"));
+        return wait.until(ExpectedConditions.urlContains(PAGE_URL));
     }
     public String getUsername() {
         WebElement username = driver.findElement(By.tagName("h2"));
