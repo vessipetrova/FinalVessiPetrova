@@ -67,11 +67,11 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOf(signInFormTitle));
         return signInFormTitle.getText();
     }
-    private void populatePassword(String password) {
+    public void populatePassword(String password) {
         WebElement passwordField = driver.findElement(By.id("defaultLoginFormPassword"));
         passwordField.sendKeys(password);
     }
-    private void populateUsername(String username) {
+    public void populateUsername(String username) {
         WebElement userNameField = driver.findElement(By.id("defaultLoginFormUsername"));
         userNameField.sendKeys(username);
     }
