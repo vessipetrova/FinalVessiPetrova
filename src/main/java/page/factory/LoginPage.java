@@ -1,4 +1,4 @@
-package pageFactory;
+package page.factory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -80,5 +80,4 @@ public class LoginPage {
         wait.until(ExpectedConditions.elementToBeClickable(signInButton));
         signInButton.click();
     }
-
 }

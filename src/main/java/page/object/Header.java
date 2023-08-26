@@ -1,7 +1,6 @@
-package pageObject;
+package page.object;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,7 +24,7 @@ public class Header {
     public boolean isLogoutButtonDisplayed(){
         try{
             WebElement logoutButton = driver.findElement(By.xpath("//*[@id=\"navbarColor01\"]/ul[2]/li/a/i"));
-            return true;
+            return logoutButton.isDisplayed();
         } catch (org.openqa.selenium.NoSuchElementException e){
             return false;
         }

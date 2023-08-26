@@ -1,1 +1,0 @@
-If a test fails, a screenshot of the webpage will be taken before exiting and then stored here.

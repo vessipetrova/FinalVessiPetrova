@@ -1,27 +1,17 @@
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import pageObject.*;
-import pageObject.HomePage;
-import pageObject.HeaderRegisteredUser;
-import pageObject.ProfilePage;
-import pageObject.Header;
-import pageObject.LoginPage;
-
-import java.time.Duration;
-
+import page.object.*;
 public class TestLogout extends TestObject {
 
     @DataProvider(name = "getUsers")
     public Object[][] getUsers() {
         return new Object[][]{{"realtester", "123456", "realtester"}, //login with username
-                //{"realtester@yopmail.com", "123456", "realtester"}, //login with email
-                //{"adminmngr@yopmail.com", "123456", "adminmngr"} //login with admin user
+                {"realtester@yopmail.com", "123456", "realtester"}, //login with email
+                {"adminmngr@yopmail.com", "123456", "adminmngr"} //login with admin user
+                // the last 2 credentials should fail as they are invalid
         };
     }
     @Test (dataProvider = "getUsers")
@@ -100,10 +90,16 @@ public class TestLogout extends TestObject {
         Header header = new Header(getDriver());
         Assert.assertFalse(header.isLogoutButtonDisplayed(), "LogoutButton is displayed as Guest!");
     }
+    @Test (priority = 4)
+    public void testLogoutAsRegisteredUserFromLoginPage() {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.navigateTo();
+        Header header = new Header(getDriver());
+        header.clickLogin();
+
+        LoginPage loginPage = new LoginPage(getDriver());
+        Assert.assertTrue(loginPage.isUrlLoaded(), "The Login URL is not correct!");
+
+        Assert.assertFalse(header.isLogoutButtonDisplayed(), "LogoutButton is displayed as RegisteredUser!");
+    }
 }
-
-
-
-
-
-

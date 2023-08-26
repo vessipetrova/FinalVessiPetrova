@@ -1,4 +1,4 @@
-package pageObject;
+package page.object;
 
 import org.openqa.selenium.WebDriver;
 public abstract class BasePage {
@@ -6,6 +6,6 @@ public abstract class BasePage {
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
-
-    // Add any common methods or utilities used across the pages
+public abstract boolean isUrlLoaded();
+public abstract void navigateTo();
 }

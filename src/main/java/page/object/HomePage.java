@@ -1,4 +1,4 @@
-package pageObject;
+package page.object;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,14 +15,12 @@ public class HomePage {
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
-
+    public void navigateTo() {
+        this.driver.get(PAGE_URL);
+    }
     public boolean isUrlLoaded() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
         return wait.until(ExpectedConditions.urlToBe(HomePage.PAGE_URL));
-    }
-
-    public void navigateTo() {
-        this.driver.get(PAGE_URL);
     }
     public void clickLoginButton() {
         WebElement loginButton = driver.findElement(By.id("loginLink"));

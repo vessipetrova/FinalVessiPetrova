@@ -1,4 +1,4 @@
-package pageFactory;
+package page.factory;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
